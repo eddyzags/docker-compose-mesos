@@ -4,3 +4,7 @@
 version: '2'
 
 services:
+  zookeeper:
+    image: jplock/zookeeper:latest
+    hostname: zookeeper
+    network_mode: "host"
