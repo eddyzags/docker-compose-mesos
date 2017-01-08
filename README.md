@@ -1,4 +1,4 @@
 # Mesos compose
 
-![Mesos compose architecture](http://imgur.com/a/RiKDK.jpg)
+![Mesos compose architecture](http://imgur.com/Bci5FtU)
 
