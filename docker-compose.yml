@@ -25,6 +25,19 @@ services:
     ports:
       - "2181:2181"
 
+  marathon:
+    image: mesosphere/marathon:latest
+    hostname: marathon
+    ports:
+      - "8080:8080"
+    links:
+      - zookeeper
+    environment:
+      - MARATHON_MASTER=zk://zookeeper:2181/mesos
+      - MARATHON_ZK=zk://zookeeper:2181/schedulers/marathon
+      - MARATHON_HOSTNAME=marathon
+      - MARATHON_HTTP_PORT=8080
+
   mesos-master:
     image: mesosphere/mesos-master:1.1.01.1.0-2.0.107.ubuntu1404
     hostname: mesos-master
