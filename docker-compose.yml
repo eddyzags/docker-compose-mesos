@@ -1,0 +1,6 @@
+# Docker compose configuration file for building a
+# mesos environment
+
+version: '2'
+
+services:
