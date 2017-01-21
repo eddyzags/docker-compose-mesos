@@ -48,6 +48,8 @@ services:
     links:
       - zookeeper
     environment:
+      - MESOS_IP=0.0.0.0
+      - MESOS_HOSTNAME=0.0.0.0
       - MESOS_PORT=5050
       - MESOS_QUORUM=1
       - MESOS_WORK_DIR=/var/lib/mesos
@@ -56,9 +58,8 @@ services:
 
   mesos-slave-1:
     image: mesosphere/mesos-slave:1.1.01.1.0-2.0.107.ubuntu1404
-    hostname: mesos-slave-1
     privileged: true
-    command: /mesos/build/bin/mesos-slave.sh
+    command: "\rm -rf /var/lib/mesos/meta/slaves/latest && /mesos/build/bin/mesos-slave.sh"
     ports:
       - "2201:2201"
     volumes:
@@ -68,7 +69,7 @@ services:
     environment:
       - MESOS_IP=0.0.0.0
       - MESOS_PORT=2201
-      - MESOS_HOSTNAME=mesos-slave-1
+      - MESOS_HOSTNAME=0.0.0.0
       - MESOS_MASTER=zk://zookeeper:2181/mesos
       - MESOS_ISOLATOR=cgroups/cpu,cgroups/mem
       - MESOS_CONTAINERIZERS=docker,mesos
@@ -77,9 +78,8 @@ services:
 
   mesos-slave-2:
     image: mesosphere/mesos-slave:1.1.01.1.0-2.0.107.ubuntu1404
-    hostname: mesos-slave-2
     privileged: true
-    command: /mesos/build/bin/mesos-slave.sh
+    command: "\rm -rf /var/lib/mesos/meta/slaves/latest && /mesos/build/bin/mesos-slave.sh"
     ports:
       - "2202:2202"
     volumes:
@@ -89,7 +89,7 @@ services:
     environment:
       - MESOS_IP=0.0.0.0
       - MESOS_PORT=2202
-      - MESOS_HOSTNAME=mesos-slave-2
+      - MESOS_HOSTNAME=0.0.0.0
       - MESOS_MASTER=zk://zookeeper:2181/mesos
       - MESOS_ISOLATOR=cgroups/cpu,cgroups/mem
       - MESOS_CONTAINERIZERS=docker,mesos
@@ -98,9 +98,8 @@ services:
 
   mesos-slave-3:
     image: mesosphere/mesos-slave:1.1.01.1.0-2.0.107.ubuntu1404
-    hostname: mesos-slave-3
     privileged: true
-    command: /mesos/build/bin/mesos-slave.sh
+    command: "\rm -rf /var/lib/mesos/meta/slaves/latest && /mesos/build/bin/mesos-slave.sh"
     ports:
       - "2203:2203"
     volumes:
@@ -110,7 +109,7 @@ services:
     environment:
       - MESOS_IP=0.0.0.0
       - MESOS_PORT=2203
-      - MESOS_HOSTNAME=mesos-slave-3
+      - MESOS_HOSTNAME=0.0.0.0
       - MESOS_MASTER=zk://zookeeper:2181/mesos
       - MESOS_ISOLATOR=cgroups/cpu,cgroups/mem
       - MESOS_CONTAINERIZERS=docker,mesos
