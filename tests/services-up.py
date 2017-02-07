@@ -36,3 +36,5 @@ while idx < len(sys.argv) - 1:
 
     idx = idx + 2
 
+
+time.sleep(5)
