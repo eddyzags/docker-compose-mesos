@@ -7,9 +7,9 @@ API_URL="http://localhost:8080"
 
 APP = {
     'id': 'healthy',
-    'cmd': 'app --ip localhost --port 4242',
+    'cmd': 'healthy --ip localhost --port 4242',
     'cpus': 0.5,
-    'mem': 50.0,
+    'mem': 16.0,
     'instances': 1,
     'container': {
         'type': 'DOCKER',
@@ -31,7 +31,7 @@ APP = {
 headers = {'Accept': 'application/json',
            'Content-Type': 'application/json; charset=utf-8'}
 
-r = requests.post(API_URL+"/v2/apps", json.dumps(APP), headers)
+r = requests.post(API_URL+"/v2/apps", headers=headers, data=json.dumps(APP))
 
 if r.status_code >= 400:
     print("An unexpected error occured: ", r.json())
