@@ -1,5 +1,5 @@
 # Docker compose configuration file for building a
-# mesos environment
+# mesos environment with Zookeeper, Marathon and Weave Scope
 
 version: '2'
 
@@ -20,13 +20,13 @@ services:
       - "0.0.0.0"
 
   zookeeper:
-    image: jplock/zookeeper:latest
+    image: jplock/zookeeper:3.4
     hostname: zookeeper
     ports:
       - "2181:2181"
 
   marathon:
-    image: mesosphere/marathon:latest
+    image: mesosphere/marathon:v1.4.5
     hostname: marathon
     ports:
       - "8080:8080"
@@ -39,7 +39,7 @@ services:
       - MARATHON_HTTP_PORT=8080
 
   mesos-master:
-    image: mesosphere/mesos-master:1.1.1
+    image: mesosphere/mesos-master:1.2.1
     hostname: mesos-master
     privileged: true
     command: /mesos/build/bin/mesos-master.sh
@@ -57,7 +57,7 @@ services:
       - MESOS_ZK=zk://zookeeper:2181/mesos
 
   mesos-slave-1:
-    image: mesosphere/mesos-slave:1.1.1
+    image: mesosphere/mesos-slave:1.2.1
     privileged: true
     command: "\rm -rf /var/lib/mesos/meta/slaves/latest && /mesos/build/bin/mesos-slave.sh"
     ports:
@@ -77,7 +77,7 @@ services:
       - MESOS_WORK_DIR=/var/lib/mesos
 
   mesos-slave-2:
-    image: mesosphere/mesos-slave:1.1.1
+    image: mesosphere/mesos-slave:1.2.1
     privileged: true
     command: "\rm -rf /var/lib/mesos/meta/slaves/latest && /mesos/build/bin/mesos-slave.sh"
     ports:
@@ -97,7 +97,7 @@ services:
       - MESOS_WORK_DIR=/var/lib/mesos
 
   mesos-slave-3:
-    image: mesosphere/mesos-slave:1.1.1
+    image: mesosphere/mesos-slave:1.2.1
     privileged: true
     command: "\rm -rf /var/lib/mesos/meta/slaves/latest && /mesos/build/bin/mesos-slave.sh"
     ports:

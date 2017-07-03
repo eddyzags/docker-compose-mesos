@@ -37,4 +37,3 @@ if r.status_code >= 400:
     print("An unexpected error occured: ", r.json())
 else:
     print "The app has been deploy successfully"
-
