@@ -1,0 +1,23 @@
+{
+    "id": "healthy",
+    "cmd": "healthy --ip localhost --port 4242",
+    "cpus": 0.5,
+    "mem": 16.0,
+    "instances": 1,
+    "container": {
+        "type": "DOCKER",
+        "docker": {
+            "image": "eddyzags/healthy:latest",
+            "network": "HOST"
+        }
+    },
+    "healthChecks": [
+        {
+            "protocol": "COMMAND",
+            "command": {
+                "value": "curl -f -X GET http://localhost:4242/"
+            },
+            "maxConsecutiveFailures": 3
+        }
+    ]
+}

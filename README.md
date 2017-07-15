@@ -13,20 +13,31 @@ Mesos compose projects aims to launch a pod of containers which are Mesos, Marat
 
 # Usage
 
-Start the mesos cluster in the background
+```shell
 make cluster-up
+```
+Start the cluster in background
 
-Stop the mesos cluster
+
+```shell
 make cluster-stop
+```
+Stop the cluster
 
-Test the mesos cluster
+
+```shell
 make cluster-test
+```
+Start a python scripts to check the service availability
 
-Deploy test application
+
+```shell
 make deploy-app
+```
+Deploy simple web service in the cluster through Marathon
 
 URLs:
 * Mesos Master UI : http://localhost:5050
-* Mesos Slaves UI : http://localhost:5051;5052;5053
+* Mesos Slaves: http://localhost:5051;5052;5053
 * Marathon UI : http://localhost:8080
 * Weavescope UI : http://localhost:4040

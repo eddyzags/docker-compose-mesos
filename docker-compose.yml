@@ -20,7 +20,7 @@ services:
       - "0.0.0.0"
 
   zookeeper:
-    image: jplock/zookeeper:3.4
+    image: jplock/zookeeper:latest
     hostname: zookeeper
     ports:
       - "2181:2181"
