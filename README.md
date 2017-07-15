@@ -1,6 +1,6 @@
 # Mesos compose
 
-Mesos compose projects aims to enable Mesos frameworks to launch a pod of docker containers for tests purposes. Docker compose allows you to describe and manage a multi-container setup which is composed of Apache Mesos, Marathon, Zookeeper and Weavescope.
+Mesos compose projects aims to launch a pod of containers which are Mesos, Marathon, Zookeeper and Weavescope with Docker Compose for testing purposes.
 
 # Versions
 
